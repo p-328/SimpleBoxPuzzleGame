@@ -15,44 +15,66 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 export const Homepage = () => {
   const navigation = useNavigation();
-  const [solved, setSolved] = useState(false);
   return (
-    <View style={[styles.layout, {alignItems: 'center',
-    justifyContent: 'center'}]}>
+    <View style={[styles.layout, {
+      alignItems: 'center',
+      justifyContent: 'center'
+    }]}>
       <Text>Levels</Text>
       <Button title="Level 1" onPress={() => navigation.navigate('Level 1')} />
       <Button title="Level 2" onPress={() => navigation.navigate('Level 2')} />
       <Button title="Level 3" onPress={() => navigation.navigate('Level 3')} />
     </View>
   );
-}
+};
 export const Level1 = () => {
   const [solved1, setSolved1] = useState(false);
   return (
     <View style={[styles.layout]}>
-      <View style={[styles.box]}/>
+      <Pressable onPress={() => setSolved1(true)}>
+        <View style={[styles.box, { alignItems: pick, justifyContent: pick }]} />
+      </Pressable>
+      {
+        solved1 ? <Text>Solved!</Text> : <Text></Text>
+      }
+      <Button title="Play Again" onPress={() => {
+        setSolved1(false);
+      }} />
     </View>
   );
-}
+};
 export const Level2 = () => {
   const [solved2, setSolved2] = useState(false);
   return (
-    <View style={[styles.layout, {alignItems: pick1,
-    justifyContent: pick1}]}>
-      <View style={[styles.box, {alignItems: pick1,
-    justifyContent: pick1}]}/>
+    <View style={[styles.layout, { alignItems: pick1, justifyContent: pick1 }]}>
+      <Pressable onPress={() => setSolved2(true)}>
+        <View style={[styles.box, { alignItems: pick1, justifyContent: pick1 }]} />
+      </Pressable>
+      {
+        solved2 ? <Text>Solved!</Text> : <Text></Text>
+      }
+      <Button title="Play Again" onPress={() => {
+        setSolved2(false);
+      }} />
     </View>
   );
-}
+};
 export const Level3 = () => {
   const [solved3, setSolved3] = useState(false);
   return (
-    <View style={[styles.layout, {alignItems: pick2, justifyContent: pick2}]}>
-      <View style={[styles.box]}/>
-      
+    <View style={[styles.layout, { alignItems: pick2, justifyContent: pick2 }]}>
+      <Pressable onPress={() => setSolved3(true)}>
+        <View style={[styles.box, { alignItems: pick2, justifyContent: pick2 }]} />
+      </Pressable>
+      {
+        solved3 ? (<Text>Solved!</Text>) : <Text></Text>
+      }
+      <Button title="Play Again" onPress={() => {
+        setSolved3(false);
+      }} />
     </View>
   );
-}
+};
 
 export default function App() {
   return (
@@ -80,7 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: pick,
   },
   box: {
-    backgroundColor: 'rgb(122, 128, 128)',
+    backgroundColor: 'rgb(128, 128, 128)',
     height: 50,
     width: 50, 
     alignItems: pick,
